@@ -23,5 +23,12 @@ class Libro(models.Model):
         return "Libro: "+self.titulo
     
 
-
-           
+class persona (models.Model):
+     nombre = models.CharField(max_length=20, verbose_name='Nombre')
+     apellido = models.CharField(max_length=20, verbose_name='Apellido')
+     cedula=models.IntegerField(max_length=11,verbose_name="cedula")
+     telefono=models.IntegerField(max_length=10,verbose_name="Telefono")
+     email=models.CharField(max_length=60, verbose_name='Correo')
+     direccion= models.CharField(max_length=20, verbose_name='direccion')
+     edad= models.DateField(verbose_name="Fecha de nacimiento")
+     
