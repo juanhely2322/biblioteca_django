@@ -8,5 +8,5 @@ urlpatterns =[
     path('libros/crear', views.crear, name='crear'),
     path('libros/editar', views.editar, name='editar'),
     path('libros/eliminar/<int:id_libro>', views.delete, name='delete'),
-    
+    path("libros/prestamo",views.prestamo,name="prestamo")
 ]

@@ -3,5 +3,7 @@ from .models import Libro
 
 class LibroForm(forms.ModelForm):
     class Meta:
-        model = Libro
-        fields = ["titulo","descripcion","cantidad","imagen"]
+        
+        model =Libro
+        fields = ["titulo","descripcion","cantidad","imagen","genero_libro"]
+      

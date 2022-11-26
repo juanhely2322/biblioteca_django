@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect,get_object_or_404
-from .models import Libro
+from .models import Libro,genero
 from django.db import IntegrityError
 from django.core.files.storage import FileSystemStorage
+from django.db.utils import IntegrityError
+
 from .forms import LibroForm
 
 def inicio(request):
@@ -16,8 +18,9 @@ def libros(request):
     return render(request, 'libros/index.html', {'libros':libros})
 
 def crear (request):
+    gene=genero.objects.all()
     if request.method == "GET":
-        return render(request, 'libros/crear.html', {'formulario': LibroForm })
+        return render(request, 'libros/crear.html', {'formulario': LibroForm,"genero":gene })
     else: 
         
         try:
@@ -32,14 +35,16 @@ def crear (request):
                 lib.titulo=form.cleaned_data["titulo"]
                 lib.cantidad=form.cleaned_data["cantidad"]
                 lib.disponible=form.cleaned_data["cantidad"]
+                lib.genero_libro=form.cleaned_data["genero_libro"]
+                print("este es el valor;  "+str(form.cleaned_data["genero_libro"]))
                 lib.imagen=im.url(imageName)
                 lib.descripcion=form.cleaned_data["descripcion"]
                 lib.save()
-                return render(request, 'libros/crear.html', {'formulario': LibroForm ,"error":"se ha guardado con exito"}) 
+                return render(request, 'libros/crear.html', {'formulario': LibroForm ,"error":"Se ha guardado con exito","genero":gene}) 
            
         except ValueError:
             
-            return render(request, 'libros/crear.html', {'formulario': LibroForm ,"error":"ha ocurrido un error"})
+            return render(request, 'libros/crear.html', {'formulario': LibroForm ,"error":"ha ocurrido un error","genero":gene})
 
     
 
@@ -49,17 +54,21 @@ def editar (request):
 
 def delete (request, id_libro):
     print(id_libro)
-    libro=get_object_or_404(Libro, pk=id_libro)
+    #libro=get_object_or_404(Libro, pk=id_libro)
     try:
+            libro=Libro.objects.get(pk=id_libro)
             libro.delete()
             return redirect("libros")
-    
-    except ValueError:
+
+    except IntegrityError :
         
         return render(request, 'libros/index.html', {'libros':libros,"error":"ha ocurrido un error"})      
    
    
+#prestamo de libros
 
+def prestamo(request):
+    return render(request, 'libros/index.html',)
 
 
 
