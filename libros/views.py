@@ -5,7 +5,7 @@ from django.core.files.storage import FileSystemStorage
 from django.db.utils import IntegrityError
 import os
 from .forms import LibroForm, personaForm
-
+from django.contrib.auth.decorators import login_required
 
 def inicio(request):
     return render(request, 'paginas/inicio.html')
@@ -14,13 +14,13 @@ def inicio(request):
 def nosotros(request):
     return render(request, 'paginas/nosotros.html')
 
-
+@login_required
 def libros(request):
     libros = Libro.objects.all()
 
     return render(request, 'libros/index.html', {'libros': libros})
 
-
+@login_required
 def crear(request):
     gene = genero.objects.all()
     if request.method == "GET":
@@ -59,11 +59,11 @@ def crear(request):
 
             return render(request, 'libros/crear.html', {'formulario': LibroForm, "error": "ha ocurrido un error", "genero": gene})
 
-
+@login_required
 def editar(request):
     return render(request, 'libros/editar.html')
 
-
+@login_required
 def delete(request, id_libro):
     print(id_libro)
     #libro=get_object_or_404(Libro, pk=id_libro)
@@ -81,7 +81,7 @@ def delete(request, id_libro):
 
 
 # prestamo de libros
-
+@login_required
 def prestamo(request, id_libro):
 
     print(id_libro)
@@ -105,12 +105,9 @@ def prestamo(request, id_libro):
             print(person.id)
 
        # return render(request, 'libros/prestamo.html', {"error": "algo ha ocurrido"})
-
+@login_required
 def historial(request):
-    cursor=connection.cursor()
-    cursor.execute("""SELECT  * from libreria.libros_persona  inner join libros_libro_prestamo
-on libros_libro_prestamo.persona_id=libreria.libros_persona.id
-inner join libros_libro  on  libros_libro.id= libros_libro_prestamo.libro_id;""")
-    r=cursor.fetchone()
+    r= Libro.objects.all()
     print(r)
+    
     return render(request,"libros/history.html",{"historys":r})

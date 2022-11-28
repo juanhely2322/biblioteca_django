@@ -4,14 +4,18 @@
 
 {% block contenido %}
 
+
 <div class="card">
-    {%if user.is_authenticated and user.is_superuser %}
-    <div class="card-header">
-        <a name="" id="" class="btn btn-success" href="{% url 'crear' %}" role="button">Agregar nuevo libro</a>
+    <div class="card-header" style="background-color: hsl(0, 0%, 49%);"
+    >
+        <a name="" id="" class="btn btn-warning" href="{% url 'crear' %}" role="button">Agregar nuevo libro</a>
     </div>
-    {%endif%}
-    <div class="card-body">
-        <h4 class="card-title">Libros</h4>
+    <div class="card-body" style="background-color: hsl(0, 1%, 35%);">
+    
+          <div class="text-white text-center">
+            <h1 class="mb-3">LIBROS</h1>
+          </div>
+          
         <div class="table-responsive">
             <table class="table table-primary">
                 <thead>
@@ -21,7 +25,6 @@
                         <th scope="col">Imagen</th>
                         <th scope="col">Descripcion</th>
                         <th scope="col">Cantidad</th>
-                        <th scope="col">Genero</th>
                         <th scope="col">Ejemplares diponibles</th>
                         <th scope="col">Acciones</th>
                     </tr>
@@ -40,20 +43,13 @@
                         
                         <td>{{ libro.descripcion }}</td>
                         <td>{{ libro.cantidad }}</td>
-                        <td>{{ libro.genero_libro}}</td>
                         <td>{{ libro.disponible}}</td>
-                        
                         <td>
                             {%if user.is_authenticated and user.is_superuser %}
                             <a name="" id="" class="btn-info" href="{% url 'editar' %}" role="button">Editar</a> | 
                             <a name="" id="" class="btn-danger" href="{% url 'delete' libro.id %}" role="button">Borrar</a>
-                            {%endif%}
-                          {%if user.is_authenticated  %}  
-                          |<a name="" id="" class="btn-info" href="{% url 'prestamo' libro.id %}" role="button">Prestar</a> 
-                          {%endif%}    
-                        </td>
-                          
-                             
+                            |<a name="" id="" class="btn-info" href="{% url 'prestamo' libro.id %}" role="button">Prestar</a> 
+                            {%endif%}     
                         </tr>
                     </tr>
 
@@ -61,11 +57,9 @@
                 </tbody>
             </table>
         </div>
-        
+    </section>
     </div>
-    <div class="card-footer text-muted">
-        Footer
-    </div>
+
 </div>
 
 {% endblock %}   

@@ -20,7 +20,7 @@ class persona (models.Model):
      direccion= models.CharField(max_length=20, verbose_name='direccion')
      edad= models.DateField(verbose_name="Fecha de nacimiento")
      def __str__(self):
-        return "Libro: "+self.nombre
+        return "nombre "+self.nombre
      
 class Libro(models.Model):
     

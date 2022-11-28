@@ -1,36 +1,86 @@
 {% extends "base.html" %}
- {% block contenido %}
-<main class="container">
-  <div class="row">
-    <div class="col-md-4 offset-md-4 mt-5">
-      <form action="{% url 'login' %}" method="post" class="card card-body">
-        {% csrf_token %}
-        <h1 class="text-center">login</h1>
-        {{error}}
-        <div class="mb-3">
-          <label for="username">Username</label>
-          <input
-            type="text"
-            name="username"
-            id="username"
-            class="form-control"
-            placeholder="Write your user"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="password1">Password:</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            class="form-control"
-            placeholder="Write your password"
-          />
-        </div>
+{% load static %}
 
-        <button class="btn btn-primary">Login</button>
-      </form>
+
+{% block contenido %}
+<body >
+  <section class="vh-100" style="background-color: hsl(0, 1%, 35%);">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-xl-10">
+          <div class="card" style="border-radius: 1rem;">
+            <div class="row g-0">
+              <div class="col-md-6 col-lg-5 d-none d-md-block">
+                <img src="https://thumbs.dreamstime.com/b/filas-de-libros-grises-en-la-biblioteca-17481868.jpg/img/Photos/new-templates/bootstrap-login-form/img1.webp"
+                  alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+            </div>
+            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+              <div class="card-body p-4 p-lg-5 text-black">
+
+                <form>
+                  
+
+                    <main class="container" >
+                      <div class="text-center pt-1 mb-5 pb-1">
+                           
+                        <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                        <span class="h1 fw-bold mb-0">iniciar sesion</span>
+                       
+                
+                      </div>
+                      
+                          <form action="{% url 'login' %}" method="post" class="card card-body">
+                            {% csrf_token %}
+                            <div class="text-center pt-1 mb-5 pb-1">
+                              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrOHq5b-DCyl9R6lCn5Xpi2glZMZilUYrqB0cx6GiGhHSowO3jGQn1Zqfvf4KR0Ax8gvk&usqp=CAU" width="100" height="100" alt="..." class="rounded-circle">
+                            </div>
+                            
+                            
+                            
+                            {{error}}
+                            <div class="mb-3">
+                              <label class="form-label" for="username"></label>
+                              <input
+                                type="text"
+                                name="username"
+                                id="username"
+                                class="form-control"
+                                placeholder="Usuario"
+                              />
+                            </div>
+                            <div class="mb-3">
+                              <label for="password1"></label>
+                              <input
+                                type="password"
+                                name="password"
+                                id="password"
+                                class="form-control"
+                                placeholder="contraseña"
+                              />
+                            </div>
+    
+        
+                            <div class="text-center pt-1 mb-5 pb-1">
+                              <button class="btn btn-dark btn-lg btn-block" type="submit" >login</button>
+                            </div>
+
+                          
+                          </form>
+                   
+                    </main>
+                  </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</main>
+</section>
+
+
+</body>  
 {% endblock %}
+
+
+

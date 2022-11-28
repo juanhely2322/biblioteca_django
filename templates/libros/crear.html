@@ -4,17 +4,28 @@
 
 {% block contenido %}
 
-<div class="card">
-    <div class="card-header">
-        Crear un libro 
-    </div>
-    <div class="card-body">
-        <h4 class="card-title">Datos de libro</h4>
-      {% include 'libros/form.html' %}
-    </div>
-    <div class="card-footer text-muted">
+
+    <body>
+        <div class="d-flex justify-content-center align-items-center h-100" >
+            <div class="rounded-right" style="background-color: hsl(0, 94%, 26%);">
+            
+                <p style="color:rgba(255, 255, 255, 0.993) ;">
+                    CREAR LIBRO: 
+                  </p>
+            </div>
         
-    </div>
-</div>
+                
+          
+            <div class="card-body">
+                <h4 class="card-title">Datos de libro</h4>
+              {% include 'libros/form.html' %}
+            </div>
+            <div class="card-footer text-muted">
+                
+            </div>
+        </div>
+    </body>
+
+
 
 {% endblock %}    
