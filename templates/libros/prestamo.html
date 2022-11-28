@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block titulo %} Libros prestados {% endblock %} 
+{% block contenido %}
+<form  method="post">
+    {% csrf_token %}
+    {{error}}
+    <label for="nombre">Nombre</label>
+<input type="text" name="nombre" class="form-control"   Required  />
+<label for="apellido">Apellido</label>
+<input type="text" name="apellido" class="form-control"  Required  >
+<label for="cedula">Cedula</label>
+<input type="number"name="cedula" class="form-control"  Required  />
+<label for="telefono">Telefono</label>
+<input type="number" class="form-control" name="telefono"   Required  />
+
+<label for="email" >Email</label>
+<input type="text" class="form-control" name="email"   Required />
+<label for="direccion">Direccion</label>
+
+<input type="text"class="form-control"  name="direccion"    Required /> 
+
+<label for="edad" class="form-control" >Edad</label>
+<input type="date" class="form-control" name="edad"   Required />
+<button type="submit" class="btn btn-success">Prestar</button>
+</form>
+{% endblock %}  

@@ -8,5 +8,6 @@ urlpatterns =[
     path('libros/crear', views.crear, name='crear'),
     path('libros/editar', views.editar, name='editar'),
     path('libros/eliminar/<int:id_libro>', views.delete, name='delete'),
-    path("libros/prestamo",views.prestamo,name="prestamo")
+    path("libros/prestamo/<int:id_libro>",views.prestamo,name="prestamo"),
+    path('libros/historial', views.historial, name='history')
 ]

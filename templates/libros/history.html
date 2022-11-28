@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block titulo %} Libros prestados {% endblock %} 
+{% block contenido %}
+
+{% for history in historys %}
+<p>{{history.titulo}}</p>
+<p>{{history.personas.nombre}}</p>
+
+{% endfor %}
+
+{%endblock%}
